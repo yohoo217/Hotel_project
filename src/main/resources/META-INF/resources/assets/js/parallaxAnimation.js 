@@ -1,0 +1,23 @@
+window.addEventListener('scroll', function() {
+    var scrolled = window.pageYOffset;
+    
+    var layer1 = document.getElementById('layer1');
+    var layer2 = document.getElementById('layer2');
+
+    // Layer 1从左向右滑动效果
+    if(scrolled > 15 && scrolled < 300) {
+        // 计算滑动距离，可以根据需要调整系数
+        var translateX = (scrolled - 15) * 10; 
+        layer1.style.transform = 'translateX(' + translateX + 'px)';
+    } else {
+        layer1.style.transform = 'translateX(0px)';
+    }
+
+    // Layer 2从左向右滑动效果，仅在Layer 1滑动结束后开始
+    if(scrolled > 200 && scrolled < 475) {
+        var translateX = (scrolled - 200) * 10; // 计算滑动距离，可以根据需要调整系数
+        layer2.style.transform = 'translateX(' + translateX + 'px)';
+    } else {
+        layer2.style.transform = 'translateX(0px)';
+    }
+});
