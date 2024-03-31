@@ -38,6 +38,7 @@ class GreetingResource {
         val photos = adRepository.getAdPhotos()
         logger.info("$photos")
         return Templates.hello()
+                .data("id", "")
                 .data("title", titles.joinToString(", "))
                 .data("description", "")
                 .data("star", "")
@@ -57,8 +58,12 @@ class GreetingResource {
 
         return if (photo != null) {
             Templates.ad()
-                    .data("title", titles.joinToString(", "))
-                    .data("id", id)
+                .data("id", "")
+                .data("title", titles.joinToString(", "))
+                .data("description", "")
+                .data("star", "")
+                .data("imgSrc", "")
+                .data("photos", photos)
         } else {
             throw NotFoundException()
         }

@@ -7,8 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.111.3">
-    <title>房型一{id}</title>
-
+<!--    <title>房型一{id}</title> 還不知道要怎麼拿到 id -->
+    <title>時空穿梭，這個路徑是想要是 /ad/0001</title>
+<!--    還不知道怎麼讓上面這個 bar 可以呈現在最前面不要被遮到-->
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
 
     <link href="/assets/bootstrap.min.css" rel="stylesheet">
@@ -165,13 +166,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-md-7 py-4">
-                    <h4>關於我們</h4>
-                    <p class="text-body-secondary">this is a beautiful city</p>
+                    <h4>這裡還不知道要放什麼</h4>
+                    <p class="text-body-secondary">hello adventure</p>
                 </div>
                 <div class="col-sm-4 offset-md-1 py-4">
-                    <h4>粉絲團連結</h4>
+                    <h4>連結</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-blue">Twitter</a></li>
+                        <li><a href="#" class="text-blue">瑞克搖</a></li>
                         <li><a href="#" class="text-yellow">Facebook</a></li>
                         <li><a href="#" class="text-blue">Email me</a></li>
                     </ul>
@@ -179,9 +180,6 @@
             </div>
         </div>
     </div>
-
-
-
 
 
     <div class="navbar navbar-dark bg-dark shadow-sm">
@@ -192,7 +190,7 @@
                     <path d="M7.207 1a1 1 0 0 0-1.414 0L.146 6.646a.5.5 0 0 0 .708.708L1 7.207V12.5A1.5 1.5 0 0 0 2.5 14h.55a2.51 2.51 0 0 1-.05-.5V9.415a1.5 1.5 0 0 1-.56-2.475l5.353-5.354L7.207 1Z"/>
                     <path d="M8.793 2a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708L8.793 2Z"/>
                 </svg>
-                <strong>洄瀾好趣</strong>
+                <strong>時空穿梭畫面</strong>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
                     aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -217,7 +215,7 @@
                 <div class="carousel-caption text-start">
                     <h1>Example headline.</h1>
                     <p>Some representative placeholder content for the first slide of the carousel.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="#">just a button</a></p>
                 </div>
             </div>
         </div>
@@ -242,6 +240,84 @@
             </div>
         </div>
     </div>
+    <div class="album py-5 bg-body-tertiary">
+        <!-- Original content... -->
+        <!-- Parallax effect and fade-in animation integration starts here -->
+        <div class="parallax-container">
+            <div class="background"></div> <!-- Background layer -->
+            <div id="layer1" class="parallax-layer"></div> <!-- Parallax layer 1 -->
+            <div id="layer2" class="parallax-layer"></div> <!-- Parallax layer 2 -->
+        </div>
+    </div>
+
+    <style>
+    .parallax-container {
+        position: relative;
+        width: 100%;
+        height: 700px; /* Provide enough scroll space */
+    }
+    .background {
+        position: fixed;
+        top: 30px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://static.aottercdn.com/trek/media/07da6ba2-5f96-427e-998f-6c73c23b6622.png');
+        background-size: cover;
+        background-position: center;
+        z-index: 0;
+    }
+    .parallax-layer {
+        position: fixed; /* Changed to fixed positioning */
+        width: 115%;
+        height: 115%;
+        top: -90px;
+
+    }
+    #layer1 {
+        background-image: url('https://static.aottercdn.com/trek/media/7d3b321a-57b1-421a-a8e0-4513ad9d8bce.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        right: 1200px; /* Starting position */
+    }
+    #layer2 {
+        background-image: url('https://static.aottercdn.com/trek/media/a3c4911a-f67f-4f23-be11-9795efd5b08d.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        right: 1200px; /* Set the initial position of layer2 */
+    }
+</style>
+
+    <script src="/assets/bootstrap.bundle.min.js"></script>
+
+    <script>
+window.addEventListener('scroll', function() {
+    var scrolled = window.pageYOffset;
+
+    var layer1 = document.getElementById('layer1');
+    var layer2 = document.getElementById('layer2');
+
+    // Layer 1 slide effect from left to right
+    if(scrolled > 15 && scrolled < 300) {
+        // Calculate the sliding distance, can be adjusted as needed
+        var translateX = (scrolled - 15) * 10;
+        layer1.style.transform = 'translateX(' + translateX + 'px)';
+    } else {
+        layer1.style.transform = 'translateX(0px)';
+    }
+
+    // Layer 2 slide effect from left to right, starts only after Layer 1 sliding ends
+    if(scrolled > 200 && scrolled < 475) {
+        var translateX = (scrolled - 200) * 10; // Calculate the sliding distance, can be adjusted as needed
+        layer2.style.transform = 'translateX(' + translateX + 'px)';
+    } else {
+        layer2.style.transform = 'translateX(0px)';
+    }
+});
+</script>
+    <!-- Parallax effect and fade-in animation integration ends here -->
+
+    <!-- Rest of the original content... -->
 
 <main>
 
@@ -286,16 +362,11 @@
         </div>
     </div>
 
-
-
 </main>
-
-
-
 
 <script src="/assets/bootstrap.bundle.min.js"></script>
 
-
+</div>
 </body>
 </html>
 <footer class="text-body-secondary py-5">
